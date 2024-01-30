@@ -12,8 +12,22 @@ function initializeGameState($game_id, $player_id, $player_symbol)
     ];
 }
 
+function joinGame($game_id, $join_player_id)
+{
+    if (isset($_SESSION['game_state'][$game_id]) && count($_SESSION['game_state'][$game_id]['players']) < 2) {
+        $_SESSION['game_state'][$game_id]['players'][$join_player_id] = 'O';
+        return true;
+    }
+    return false;
+}
+
 function getGameState($game_id)
 {
     return $_SESSION['game_state'][$game_id];
+}
+
+function checkGameExists($game_id)
+{
+    return isset($_SESSION['game_state'][$game_id]);
 }
 ?>
