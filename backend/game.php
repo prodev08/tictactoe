@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($action == 'move') {
         $cell_index = $_POST['cell_index'];
+        makeMove($game_id, $player_id, $cell_index);
     } elseif ($action == 'state') {
         $state = getGameState($game_id);
         echo json_encode($state);
